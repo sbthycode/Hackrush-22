@@ -15,7 +15,7 @@
 
 
 ### Lets explore the features ### 
-The data provided demanded us to extract the features in the most efficient and relevant manner. We extracted the year of offering of a course from the timestep and normalized it.  To extract the information of the courses we used a novel and ingenious method. We used label binarizer to create 656 different columns for every Course. Label Binarizer essentially marked the presence of a course corresponding to it's column(new feature) for every training example. We repeated this for the Faculty feature. Essentially we now had 1+656+560 features. We also observed through confusion matrix that the amount of enrolment was depended heavily on the time (linearly), moderately on courses and faculty. Therefoer we increased the weight given to timestep. Final feature size: 5+656+560+5.
+The data provided demanded us to extract the features in the most efficient and relevant manner. We extracted the year of offering of a course from the timestep and normalized it.  To extract the information of the courses we used a novel and ingenious method. We used label binarizer to create 656 different columns for every Course. Label Binarizer essentially marked the presence of a course corresponding to it's column(new feature) for every training example. We repeated this for the Faculty feature. Essentially we now had 1+656+560 features. We also observed through confusion matrix that the amount of enrolment was depended heavily on the time (linearly), moderately on courses and faculty. Therefore we increased the weight given to timestep. Final feature size: 5+656+560+5.
 
 
 ### Lets look at the train set size ###
@@ -25,11 +25,11 @@ Initially we trained on the entire dataset.
 3. Our list of expanded features allowed us to train on smaller data samples size.
 
 
-### That's fine, but, which model do we choose??
+### That's fine, but, which model did we choose?
 
 Well, this readme has already been over worked upon. Let's keep this short. 
 We worked our way around every possible approach, from state of the art Transformers to the cliche Linear Regression. 
-We observed that we received great results with approaches using ensembling. The idea was to use Linear Regression and XGD Regressor(they gave best results) and generate multiple models using soft voting on these two models. We developed multiple such models thorugh soft voting and then applied ensembled learing on the prediction of these generated models to get the final predictions. A dense neural network was trained to predict the final results. 
+We observed that we received great results with approaches using ensembling. The idea was to use Linear Regression and SGD Regressor(they gave best results) and generate multiple models using soft voting on these two models. We developed multiple such models thorugh soft voting with different hyperparameter tuning and then applied ensembled learing with a neural network as the meta learner on the prediction of these generated models to get the final predictions.
 
 An intersting thing to observe is that most of the Deep Learning approaches involving Transformers, LSTMs couldn't match the results achieved with the above approach. This, very possible, could be due to them overfitting the data, especially the predictions based on earlier time steps.
 
@@ -38,5 +38,5 @@ An intersting thing to observe is that most of the Deep Learning approaches invo
 
 A team of four budding friends with a universal passion for Machine Learning worked their way through solving this problem, consuming loads of free pizza and caffine for 48 hours straight, all worth the first position!
 
-Please find the Kaggle Competition here.  [here](https://www.kaggle.com/competitions/hackrush22-ml-challenge)
+Please find the Kaggle Competition [here](https://www.kaggle.com/competitions/hackrush22-ml-challenge).
 
